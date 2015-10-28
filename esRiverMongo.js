@@ -1,9 +1,8 @@
-Fairs = new Mongo.Collection('Fairs');
+Fairs = new Mongo.Collection('fairs');
 
 if (Meteor.isClient) {
   Template.hello.helpers({
     counter: function () {
-      console.log("in helper: ");
       return Fairs.findOne({name: 'counter'}).number;
     }
   });
@@ -12,7 +11,6 @@ if (Meteor.isClient) {
     'click button': function () {
       var fair = Fairs.findOne({name: 'counter'});
       var current = fair.number + 1;
-      console.log("in event: " + fair._id);
       Fairs.update({_id: fair._id}, {$set: {number: current}});
     }
   });
@@ -23,5 +21,7 @@ if (Meteor.isServer) {
     if (! Fairs.findOne()) {
       Fairs.insert({name: 'counter', number: 3});
     }
+    console.log('ES:');
+    console.log(ES);
   });
 }
