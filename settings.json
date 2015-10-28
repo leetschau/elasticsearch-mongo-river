@@ -1,0 +1,7 @@
+{
+  "app_name": "The Newfairs Search",
+  "elasticsearch": {
+    "host": "localhost:9201",
+    "meteorLogger": true
+  }
+}
